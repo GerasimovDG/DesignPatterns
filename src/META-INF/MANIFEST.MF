@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Main-Class: sample.Main
+Class-Path: batik-all-1.12.jar xml-apis-ext-1.3.04.jar xmlgraphics-commons.jar xml-commons-apis-ext.jar pdf-transcoder.jar avalon-framework.jar avalon-framework-api.jar apache-commons-logging.jar apache-commons-io.jar
