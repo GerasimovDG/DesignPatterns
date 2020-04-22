@@ -11,6 +11,8 @@ public class Line extends ACurve {
     @Override
     public IPoint getPoint(double t) {
         IPoint res = new Point();
+        IPoint a = getPointA();
+        IPoint b = getPointB();
         double aX = a.getX();
         double bX = b.getX();
         double aY = a.getY();

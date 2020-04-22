@@ -1,0 +1,22 @@
+<component name="libraryTable">
+  <library name="lib">
+    <CLASSES>
+      <root url="file://$PATH_TO_FX$" />
+      <root url="file://C:/Program Files/Java/jdk-14/jFoenix" />
+      <root url="file://C:/Program Files/Java/jdk-14/batik-1.12" />
+      <root url="file://C:/Program Files/Java/jdk-14/batik-1.12/lib" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PATH_TO_FX$" />
+      <root url="file://C:/Program Files/Java/jdk-14/batik-1.12/lib" />
+      <root url="file://C:/Program Files/Java/jdk-14/batik-1.12/samples/tests/resources/java/sources" />
+    </SOURCES>
+    <jarDirectory url="file://C:/Program Files/Java/jdk-14/batik-1.12" recursive="false" />
+    <jarDirectory url="file://C:/Program Files/Java/jdk-14/batik-1.12/lib" recursive="false" />
+    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" />
+    <jarDirectory url="file://C:/Program Files/Java/jdk-14/jFoenix" recursive="false" />
+    <jarDirectory url="file://C:/Program Files/Java/jdk-14/batik-1.12/lib" recursive="false" type="SOURCES" />
+    <jarDirectory url="file://$PATH_TO_FX$" recursive="false" type="SOURCES" />
+  </library>
+</component>
