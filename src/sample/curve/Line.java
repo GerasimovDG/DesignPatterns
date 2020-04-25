@@ -1,11 +1,15 @@
 package sample.curve;
 
 import sample.Point;
+import sample.interfaces.ICurve;
 import sample.interfaces.IPoint;
 
 public class Line extends ACurve {
     public Line(IPoint a, IPoint b) {
         super(a, b);
+    }
+    public Line(ICurve curve) {
+        super(curve);
     }
 
     @Override

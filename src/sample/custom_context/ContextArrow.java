@@ -15,13 +15,13 @@ public class ContextArrow extends AContext {
         super(pane);
         hexColor = "#218359";
         svgRule = new SVGPath();
-        svgRule.setStrokeWidth(5);
+        svgRule.setStrokeWidth(3);
         svgRule.setStroke(Color.web(hexColor));
         svgRule.setFill(Color.web(hexColor));
     }
 
-    private String circlePath(int cx, int cy, int r){
-        return "M " +cx+' '+cy+ " m -" +r+ ", 0 a " +r+','+r+ " 0 1,0 " +(r*2)+ ",0 a " +r+','+r+ " 0 1,0 -" +(r*2)+ ",0";
+    private String circlePath(int cx, int cy, int r) {
+        return "M " + cx + ' ' + cy + " m -" + r + ", 0 a " + r + ',' + r + " 0 1,0 " + (r * 2) + ",0 a " + r + ',' + r + " 0 1,0 -" + (r * 2) + ",0";
     }
 
     @Override
@@ -33,9 +33,19 @@ public class ContextArrow extends AContext {
         tmp.getStrokeDashArray().addAll(svgRule.getStrokeDashArray());
 
         double width = svgRule.getStrokeWidth();
-        String circlePath = circlePath((int)p1.getX(), (int)p1.getY(), (int)width*2);
+        String circlePath = circlePath((int) p1.getX(), (int) p1.getY(), (int) width * 2);
 
         tmp.setContent(circlePath);
+        pane.getChildren().add(tmp);
+    }
+
+    void setDrawInfo(double x1, double y1, int x2, int y2) {
+        SVGPath tmp = new SVGPath();
+        tmp.setContent(String.format("M%d,%d L%d,%d", (int) x1, (int) y1, x2, y2));
+        tmp.setStrokeWidth(svgRule.getStrokeWidth());
+        tmp.setStroke(svgRule.getStroke());
+        tmp.setFill(svgRule.getFill());
+        tmp.getStrokeDashArray().addAll(svgRule.getStrokeDashArray());
         pane.getChildren().add(tmp);
     }
 
@@ -45,36 +55,22 @@ public class ContextArrow extends AContext {
         double y = previousPoint.getY();
         double x1 = endPoint.getX();
         double y1 = endPoint.getY();
-        double  beta = Math.atan2(y-y1,x1-x); //{ArcTan2 ищет арктангенс от x/y что бы неопределенностей не
-        //  возникало типа деления на ноль}
-        double alpha = Math.PI/5;// {угол между основной осью стрелки и рисочки в конце}
-        int r1 = 20; //{длинна риски}
+        double beta = Math.atan2(y - y1, x1 - x);   //{ArcTan2 ищет арктангенс от x/y что бы неопределенностей
+                                                    // не возникало типа деления на ноль}
+        double alpha = Math.PI / 10;// {угол между основной осью стрелки и рисочки в конце}
+        int r1 = 15; //{длинна риски}
 
-        int x2 =(int) Math.round(x1 - r1*Math.cos(beta + alpha));
-        int y2 =(int)Math.round(y1 + r1*Math.sin(beta + alpha));
+        int x2 = (int) Math.round(x1 - r1 * Math.cos(beta + alpha));
+        int y2 = (int) Math.round(y1 + r1 * Math.sin(beta + alpha));
+        setDrawInfo(x1, y1, x2, y2);
 
-        SVGPath tmp = new SVGPath();
-        tmp.setContent(String.format("M%d,%d L%d,%d", (int)x1, (int)y1, x2, y2));
-        tmp.setStrokeWidth(svgRule.getStrokeWidth());
-        tmp.setStroke(svgRule.getStroke());
-        tmp.setFill(svgRule.getFill());
-        tmp.getStrokeDashArray().addAll(svgRule.getStrokeDashArray());
-        pane.getChildren().add(tmp);
-
-        x2 =(int)Math.round(x1 - r1*Math.cos(beta - alpha));
-        y2 =(int)Math.round(y1 + r1*Math.sin(beta -  alpha));
-
-        tmp = new SVGPath();
-        tmp.setContent(String.format("M%d,%d L%d,%d", (int)x1, (int)y1, x2, y2));
-        tmp.setStrokeWidth(svgRule.getStrokeWidth());
-        tmp.setStroke(svgRule.getStroke());
-        tmp.setFill(svgRule.getFill());
-        tmp.getStrokeDashArray().addAll(svgRule.getStrokeDashArray());
-        pane.getChildren().add(tmp);
+        x2 = (int) Math.round(x1 - r1 * Math.cos(beta - alpha));
+        y2 = (int) Math.round(y1 + r1 * Math.sin(beta - alpha));
+        setDrawInfo(x1, y1, x2, y2);
     }
 
     public void drawLine(IPoint p1, IPoint p2) {
-        super.drawLine(p1,p2);
+        super.drawLine(p1, p2);
         previousPoint.setX(p1.getX());
         previousPoint.setY(p1.getY());
     }

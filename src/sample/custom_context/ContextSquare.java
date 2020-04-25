@@ -10,8 +10,8 @@ public class ContextSquare extends AContext {
         super(pane);
         hexColor = "#000000";
         svgRule = new SVGPath();
-        svgRule.setStrokeWidth(5);
-        svgRule.getStrokeDashArray().addAll(5.0, 10.0);
+        svgRule.setStrokeWidth(3);
+        svgRule.getStrokeDashArray().addAll(3.0, 6.0);
         svgRule.setStroke(Color.web(hexColor));
         svgRule.setFill(Color.web(hexColor));
     }

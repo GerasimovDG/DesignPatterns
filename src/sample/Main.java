@@ -16,7 +16,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader();
         Parent root = loader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Gerasimov");
-        Scene scene = new Scene(root, 800, 500);
+        Scene scene = new Scene(root, 800, 600);
 
         Controller controller = new Controller();
         controller.stage = primaryStage;
