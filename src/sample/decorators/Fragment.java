@@ -25,11 +25,6 @@ public class Fragment extends ACurveDecorator {
 
     @Override
     public IPoint getPoint(double t) {
-        if (t < tStart) {
-            t = tStart;
-        } else if (t > tFinish) {
-            t = tFinish;
-        }
-        return curve.getPoint(t);
+        return curve.getPoint(tStart + t* (tFinish - tStart));
     }
 }
